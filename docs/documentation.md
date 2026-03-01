@@ -7,6 +7,7 @@
 Central runtime controller of the framework.
 
 Responsible for:
+
 - Initializing pygame
 - Creating and managing the window
 - Running the main game loop
@@ -27,11 +28,13 @@ Main application controller.
 Creates the game window and prepares internal systems.
 
 Parameters:
+
 - `width` — Window width in pixels.
 - `height` — Window height in pixels.
 - `title` — Window caption.
 
 Initializes:
+
 - pygame
 - display surface
 - clock
@@ -45,6 +48,7 @@ Initializes:
 Starts the main loop.
 
 Flow:
+
 1. Switches to `starting_scene`
 2. Enters loop while `running == True`
 3. Each frame:
@@ -63,6 +67,7 @@ Flow:
 Switches the active scene.
 
 Flow:
+
 1. Store previous scene
 2. Call `previous_scene.on_exit()`
 3. Assign new scene
@@ -76,6 +81,7 @@ Flow:
 Stops the main loop safely.
 
 Sets:
+
 - `running = False`
 
 ---
@@ -87,6 +93,7 @@ Defines the abstract base class for all scenes.
 A Scene represents a self-contained state of the game.
 
 Examples:
+
 - Main menu
 - Gameplay
 - Pause screen
@@ -105,9 +112,11 @@ Base class for all scenes.
 Called when the scene becomes active.
 
 Parameters:
+
 - `previous_scene` — Scene that was active before this one.
 
 Use cases:
+
 - Reset state
 - Receive data
 - Resume gameplay
@@ -122,6 +131,7 @@ Default behavior: does nothing.
 Called before the scene is replaced.
 
 Use cases:
+
 - Stop sounds
 - Save temporary data
 - Clean up references
@@ -137,6 +147,7 @@ Processes a single pygame event.
 Must be implemented.
 
 Typical usage:
+
 - Input handling
 - Keyboard / mouse logic
 - Scene switching triggers
@@ -148,11 +159,13 @@ Typical usage:
 Updates game logic.
 
 Parameters:
+
 - `dt` — Delta time in seconds since last frame.
 
 Must be implemented.
 
 Use cases:
+
 - Movement
 - Physics
 - AI
@@ -165,6 +178,7 @@ Use cases:
 Draws everything for this scene.
 
 Parameters:
+
 - `surface` — The window surface to draw on.
 
 Must be implemented.
@@ -178,6 +192,7 @@ Defines the base entity class.
 An Entity represents a game object.
 
 Examples:
+
 - Player
 - Enemy
 - Projectile
@@ -211,6 +226,7 @@ These are optional depending on implementation.
 Updates the entity state.
 
 Typical behavior:
+
 - Integrates velocity into position:
   
   position += velocity * dt
@@ -230,6 +246,7 @@ Draws the entity.
 Must be implemented in subclasses.
 
 Typical behavior:
+
 - Draw rectangle
 - Draw sprite
 - Draw shape
@@ -243,6 +260,7 @@ Optional cleanup hook.
 Called before entity is removed from scene.
 
 Use cases:
+
 - Spawn particles
 - Play sound
 - Release resources
@@ -286,16 +304,19 @@ This ensures framerate independence.
 ## Responsibility Separation
 
 Engine:
+
 - Window
 - Loop
 - Scene management
 
 Scene:
+
 - Game state
 - Object grouping
 - Input interpretation
 
 Entity:
+
 - Object behavior
 - Movement
 - Rendering
