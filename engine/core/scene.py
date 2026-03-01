@@ -10,7 +10,7 @@ class Scene(ABC):
     def __init__(self):
         self.engine = None
 
-    def on_enter(self):
+    def on_enter(self, previous_scene):
         """Called when scene becomes active."""
         pass
 
