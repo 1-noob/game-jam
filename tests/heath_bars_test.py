@@ -20,13 +20,13 @@ class TestScene(Scene):
         # Progress bars
         self.health_bar = ProgressBar(
             position=(40, 40),
-            size = (300, 30),
+            size = (300, 10),
             fill_color=(220,50,50)
         )
 
         self.mana_bar = ProgressBar(
             position=(40, 90),  
-            size=(300, 30),
+            size=(300, 15),
             min_value=0,
             max_value=100,
             initial_value=0,
@@ -35,14 +35,14 @@ class TestScene(Scene):
 
         self.reverse_bar = ProgressBar(
             position=(500, 80),
-            size=(300, 25),
+            size=(300, 5),
             fill_color=(80, 200, 120),
             reverse=True
         )
 
         self.bottom_bar = ProgressBar(
             position=(250, 500),
-            size=(400, 25),
+            size=(400, 20),
             fill_color=(200, 180, 50),
         )
 
@@ -52,11 +52,6 @@ class TestScene(Scene):
             max_hearts=5,
         )
 
-        self.heart_bar_2 = HeartBar(
-            position = (500, 150),
-            max_hearts=8,
-            size=18,
-        )
 
         # Add to UI manager
         self.ui_manager.add_element(self.health_bar)
@@ -64,7 +59,6 @@ class TestScene(Scene):
         self.ui_manager.add_element(self.reverse_bar)
         self.ui_manager.add_element(self.bottom_bar)
         self.ui_manager.add_element(self.heart_bar_1)
-        self.ui_manager.add_element(self.heart_bar_2)
 
 
         # Test values
