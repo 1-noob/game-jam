@@ -1,4 +1,4 @@
-import pygame
+import pygame as pg
 from ui.base import UIElement
 
 
@@ -34,7 +34,7 @@ class HeartBar(UIElement):
         """Set the current number of hearts."""
         self.current_hearts = max(0, min(self.max_hearts, hearts))
 
-    def draw(self, surface: pygame.Surface):
+    def draw(self, surface: pg.Surface):
         """Draw the heart bar on the given surface."""
         if not self.visible:
             return
@@ -46,8 +46,8 @@ class HeartBar(UIElement):
             color = self.full_color if i < self.current_hearts else self.empty_color
 
             # Draw the heart shape (simple circle for demonstration)
-            pygame.draw.circle(surface, color, (center_x, center_y), self.size // 2)
+            pg.draw.circle(surface, color, (center_x, center_y), self.size // 2)
 
             # Draw the outline
-            pygame.draw.circle(surface, self.outline_color, (center_x, center_y), self.size // 2, 2)
+            pg.draw.circle(surface, self.outline_color, (center_x, center_y), self.size // 2, 2)
             

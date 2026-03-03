@@ -1,4 +1,4 @@
-import pygame
+import pygame as pg
 from ui.base import UIElement
 
 
@@ -24,7 +24,7 @@ class ProgressBar(UIElement):
 
         # Set up the progress bar dimensions 
         self.width, self.height = size
-        self.rect = pygame.Rect(position, size)
+        self.rect = pg.Rect(position, size)
 
         # Set up the progress bar values
         self.min_value = min_value
@@ -61,21 +61,21 @@ class ProgressBar(UIElement):
         span = self.max_value - self.min_value
         if span == 0:
             return 0.0
-        return (self.display_value - self.min_value) / span
+        return (self.current_value - self.min_value) / span
     
     def update(self, dt: float):
         """Smoothly update the current value towards the target value."""
         difference = self.target_value - self.current_value
         self.current_value += difference * min(self.smooth_speed * dt, 1.0)
 
-    def draw(self, surface: pygame.Surface):
+    def draw(self, surface: pg.Surface):
         """Draw the progress bar on the given surface."""
         if not self.visible:
             return
         
         # Shadow
         shadow_rect = self.rect.move(3, 3)
-        pygame.draw.rect(
+        pg.draw.rect(
             surface,
             (0, 0, 0, 100),  # Semi-transparent black
             shadow_rect,
@@ -83,7 +83,7 @@ class ProgressBar(UIElement):
         )
 
         # Background
-        pygame.draw.rect(
+        pg.draw.rect(
             surface,
             self.background_color,
             self.rect,
@@ -96,21 +96,21 @@ class ProgressBar(UIElement):
 
         if fill_width > 0:
             if self.reverse:
-                fill_rect = pygame.Rect(
+                fill_rect = pg.Rect(
                     self.rect.right - fill_width,
                     self.rect.y,
                     fill_width,
                     self.height
                 )
             else:
-                fill_rect = pygame.Rect(
+                fill_rect = pg.Rect(
                     self.rect.x,
                     self.rect.y,
                     fill_width,
                     self.height
                 )
             
-            pygame.draw.rect(
+            pg.draw.rect(
                 surface,
                 self.fill_color,
                 fill_rect,
@@ -118,7 +118,7 @@ class ProgressBar(UIElement):
             )
 
         # Border
-        pygame.draw.rect(
+        pg.draw.rect(
             surface,
             self.border_color,
             self.rect,
