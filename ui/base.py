@@ -3,6 +3,7 @@ import pygame
 class UIElement:
     def __init__(self, position: tuple[int, int]):
         self.x, self.y = position
+        self.visible = True
 
     def set_position(self, position: tuple[int, int]):
         self.x, self.y = position
